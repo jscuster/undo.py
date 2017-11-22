@@ -74,6 +74,7 @@ This will not work if something has changed between toggling, unless state is re
 The action is carried out immediately, the result is returned."""
 		u = self.UndoAction(func, doArgs, undoArgs, description, undoFunc)
 		self.undoBuffer.append(u)
+		self.redoBuffer = [] #state will be changed, can't redo.
 		return u()
 
 	def canUndo(self, count = 1):
