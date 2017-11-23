@@ -154,7 +154,7 @@ redoFromTime(time.time() - (60*5)) #time in seconds."""
 	def allActions(self, a, b):
 		"""This is a filter function. Ironic, since it filters nothing, but...
 This function is a filter used for the getUndos and getRedos functions, this returns all actions."""
-		return True
+		return False #false = include.
 
 	#filters that group
 	def groupByTime(self, dt = 1):
