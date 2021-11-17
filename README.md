@@ -1,11 +1,11 @@
-#undo.py
-##A simple way to implement undo/redo in python
-###Creation:
+# undo.py
+## A simple way to implement undo/redo in python
+### Creation:
 ```python
 from undo import Undo
 myUndo = Undo()
 ```
-###Usage
+### Usage
 
 Instead of calling a function to do something, call myUndo with instructions on how to do and undo the thing. This causes two things to happen. First, myUndo keeps track of the instructions you gave it, enabling undo and redo functionality for this thing. Second, it carries out the action.
 
@@ -21,7 +21,7 @@ myUndo(func, doArgs, undoArgs, description, undoFunc)
 
 When you do this, the action will be carried out immediately.
 
-####Example
+#### Example
 
 ```python
 a = []
@@ -29,7 +29,7 @@ myUndo(a.append, [3], [], "append a number", a.pop)
 #now a is [3] because the action has been carried out.
 ```
 
-###undo and redo
+### undo and redo
 
 The functions undo and redo have one argument, count, which tells that function how many times to repeat itself. For example, to undo 3 actions, 
 ```python
@@ -37,7 +37,7 @@ undo(3)
 ```
 Count defaults to 1, so undo and redo() undoes or redoes one action by default.
 
-####Continued example
+#### Continued example
 
 ```python
 #remember a = [3].
@@ -48,11 +48,11 @@ myUndo.redo()
 #now a = [3] again, we redid the action.
 ```
 
-###undoCount, redoCount
+### undoCount, redoCount
 
 The functions undoCount and redoCount return the number of undo and redo actions in the buffer.
 
-####Example
+#### Example
 
 ```python
 #from the previous examples
@@ -64,15 +64,15 @@ myUndo.redoCount #= 1, we can redo one time.
 myUndo.redo() #restore back for further examples.
 ```
 
-###clear
+### clear
 
 This function takes no arguments, it clears the buffers. When this is called, the object has the same state as it did when you first created it.
 
-###canUndo canRedo
+### canUndo canRedo
 
 These functions have one argument, count, which defaults to 1. These functions return true if you can undo or redo count times.
 
-####example
+#### example
 
 ```python
 #Continuing from all of our previous examples.
@@ -81,11 +81,11 @@ myUndo.canRedo() #False, nothing left to redo.
 myUndo.canUndo(9) #False, there is only 1 undo available.
 ```
 
-###undoFromTime redoFromTime
+### undoFromTime redoFromTime
 
 These functions undo or redo any actions after a specified time, as shown from time.time. They take one argument, the time desired.
 
-####Example
+#### Example
 
 ```python
 #continuing from previous examples.
@@ -98,7 +98,7 @@ t += 180 #t was -5 minuts, add 3 minutes to it.
 myUndo.redoFromTime(t) #All actions in the last 2 minutes were restored.
 ```
 
-###getUndos getRedos
+### getUndos getRedos
 
 These functions have one argument, filter. They return all actions in the undo or redo buffer, respectively, filtered by the filter function provided. If no filter is provided, all actions in the respective buffer are returned. See the filter functions below, and the examples that highlight their use.
 
@@ -107,7 +107,7 @@ These functions return a tuple. The first element is the number of undos/redos i
 * description, the text description you provided
 * time: the time this action was carried out. 
 
-###allActions
+### allActions
 
 This is a filter function to be passed to getUndos and getRedos. This function is the default, and need not be passed, but it is here for completeness.
 
@@ -119,7 +119,7 @@ There are also 3 functions that group the buffer. They are:
 
 To better understand how these work, see the below example.
 
-####Example
+#### Example
 
 ```python
 #grouping functions and getUndos getRedos
@@ -196,7 +196,7 @@ undo 2to undo "append a number".
 """
 ```
 
-###warning
+### warning
 
 Please note, undo and redo only works if state has *not been modified* outside the methods explained here.
 
@@ -204,7 +204,7 @@ In our first example, we created a list, then used the Undo class to add a numbe
 
 In short, if you want to use the Undo class, then make sure that all actions to an object are handled by the Undo class, or behaviour will be unstable.
 
-###The Examples
+### The Examples
 
 The examples in this file have been compiled to one file, examples.py, and are pasted below for you to use.
 
@@ -320,4 +320,4 @@ undo 4to undo "reverse the list".
 undo 2to undo "append a number".
 """
 ```
-#Thank you for your time and interest.
+# Thank you for your time and interest.
